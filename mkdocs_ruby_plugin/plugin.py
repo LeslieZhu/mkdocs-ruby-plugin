@@ -1,4 +1,5 @@
 import re
+import logging
 
 from mkdocs.config import base, config_options as c
 from mkdocs.config.defaults import MkDocsConfig
@@ -7,6 +8,10 @@ from mkdocs.structure.files import Files
 from mkdocs.structure.nav import Navigation
 from mkdocs.structure.pages import Page
 from mkdocs.utils.templates import TemplateContext
+
+
+
+logger = logging.getLogger("mkdocs.plugins")
 
 
 class RubyPluginConfig(base.Config):
