@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="mkdocs-ruby-plugin",
-    version="0.0.1",
+    version="0.0.2",
     description="An MkDocs plugin to add pinyin/furigana to Chinese/Japanese Kanji text.",
     long_description=long_description,
     long_description_content_type="text/markdown",

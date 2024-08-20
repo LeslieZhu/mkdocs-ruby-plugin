@@ -16,6 +16,7 @@ logger = logging.getLogger("mkdocs.plugins")
 
 class RubyPluginConfig(base.Config):
     global_enable = c.Type(bool, default='true')
+    title_enable = c.Type(bool, default='true')
     
     outer_begin = c.Type(str, default='{')
     outer_end = c.Type(str, default='}')
@@ -34,14 +35,25 @@ class RubyPlugin(BasePlugin[RubyPluginConfig]):
         # disable for single page with: meta.ruby = False
         if self.config.global_enable and page.meta and not page.meta.get("ruby", True):
             return True
+
+    def check_ruby_title_disable(self, page: Page):
+        # enable for single page with: meta.ruby_title = True
+        if not self.config.title_enable and (not page.meta or not page.meta.get("ruby_title", False)):
+            return True
+
+        # disable for single page with: meta.ruby_title = False
+        if self.config.title_enable and page.meta and not page.meta.get("ruby_title", True):
+            return True
         
     def on_page_content(self, html: str, *, page: Page, config: MkDocsConfig, files: Files) -> str:
         if self.check_ruby_disable(page):
             return html
 
         html = self.reemplazar_expresiones(html)
+
+        if not self.check_ruby_title_disable(page):
+            page.title = self.eliminar_caracteres_control(page.title)
         
-        page.title = self.eliminar_caracteres_control(page.title)
         return html
 
     def on_page_context(self, context: TemplateContext, *, page: Page, config: MkDocsConfig,
