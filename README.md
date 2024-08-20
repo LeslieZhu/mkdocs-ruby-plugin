@@ -39,6 +39,7 @@ To enable the plugin in the `mkdocs.yml` file:
 plugins:
   - ruby:
       global_enable: True
+      title_enable: True
       outer_begin: '{'
       outer_end: '}'
       inter_begin: '('
