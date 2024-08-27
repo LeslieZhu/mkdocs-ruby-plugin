@@ -38,15 +38,15 @@ To enable the plugin in the `mkdocs.yml` file:
 ```yaml
 plugins:
   - ruby:
-      global_enable: True
-      title_enable: True
+      global_enable: true
+      title_enable: true
       outer_begin: '{'
       outer_end: '}'
       inter_begin: '('
       inter_end: ')
 ```
 
-If `ruby.global_enable = False`, you can enable this plugin in single page:
+If `ruby.global_enable = false`, you can enable this plugin in single page:
 
 
 ```markdown
@@ -55,7 +55,7 @@ ruby: true
 ---
 ```
 
-If `ruby.global_enable = True`, you can disable this plugin in single page:
+If `ruby.global_enable = true`, you can disable this plugin in single page:
 
 
 ```markdown

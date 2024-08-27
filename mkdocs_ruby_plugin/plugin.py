@@ -15,8 +15,8 @@ logger = logging.getLogger("mkdocs.plugins")
 
 
 class RubyPluginConfig(base.Config):
-    global_enable = c.Type(bool, default='true')
-    title_enable = c.Type(bool, default='true')
+    global_enable = c.Type(bool, default=True)
+    title_enable = c.Type(bool, default=True)
     
     outer_begin = c.Type(str, default='{')
     outer_end = c.Type(str, default='}')
